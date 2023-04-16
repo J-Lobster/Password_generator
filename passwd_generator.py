@@ -9,19 +9,19 @@ alphas = letters + digits + special_chars
 def pwd_length():
   while True:
     try:
-      length = int(input("Choose your password length: "))
-      if length <= 5:
+      len = int(input("Choose your password length: "))
+      if len <= 5:
         print("The length must exceed 5 characters. Please try again.")
         continue
     except ValueError:
       print("This is not a valid entry. You must only enter a number.")
     else:
       break
-  return length
+  return len
 
 length = pwd_length()
 
-def secrets_generator(length):
+def generator():
   while True:
     pwd = ''
     for i in range(length):
@@ -32,4 +32,4 @@ def secrets_generator(length):
           break
   print(pwd)
 
-secrets_generator(length)
+generator()
