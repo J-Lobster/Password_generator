@@ -14,7 +14,7 @@ def usr_pwd_length():
         print("The length must exceed 8 characters. Please try again.")
         continue
       elif len >= 21:
-        print("You may not exceed a length of 212. Please try again.")
+        print("You may not exceed a length of 21. Please try again.")
         continue
     except ValueError:
       print("This is not a valid entry. Only numbers are allowed.")
