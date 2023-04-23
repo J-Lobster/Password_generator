@@ -14,7 +14,7 @@ def pwd_length():
         print("The length must exceed 5 characters. Please try again.")
         continue
     except ValueError:
-      print("This is not a valid entry. You must only enter a number.")
+      print("This is not a valid entry. Only numbers are allowed.")
     else:
       break
   return len
