@@ -1,29 +1,3 @@
-import secrets, string
-
-letters = string.ascii_letters
-digits = string.digits
-special_chars = string.punctuation
-
-alpha = letters + digits + special_chars
-
-def usr_pwd_length():
-  while True:
-    try:
-      len = int(input("Choose your password length: "))
-      if len <= 7:
-        print("The length must exceed 8 characters. Please try again.")
-        continue
-      elif len >= 21:
-        print("You may not exceed a length of 212. Please try again.")
-        continue
-    except ValueError:
-      print("This is not a valid entry. Only numbers are allowed.")
-    else:
-      break
-  return len
-
-length = usr_pwd_length()
-
 def usr_digits_length():
   while True:
     try:
@@ -62,15 +36,12 @@ def usr_specials_length():
 
 specials_input = usr_specials_length()
 
-def generator():
-  while True:
-    pwd = ''
-    for i in range(length):
-      pwd += ''.join(secrets.choice(alpha))
+def stop_same_inputs():
+    while True:
+        if specials_input == digits_input or digits_input == specials_input:
+            print ("You cannot have the same number of digits and special characters. Please try again.")
+            usr_digits_length()
+            usr_specials_length()
+            break
 
-    if (sum(char in special_chars for char in pwd) == specials_input and 
-        sum(char in digits for char in pwd) == digits_input):
-          break
-  print(pwd)
-
-generator()
+stop = stop_same_inputs()

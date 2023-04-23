@@ -2,8 +2,11 @@ def usr_pwd_length():
   while True:
     try:
       len = int(input("Choose your password length: "))
-      if len <= 5:
-        print("The length must exceed 5 characters. Please try again.")
+      if len <= 7:
+        print("The length must exceed 8 characters. Please try again.")
+        continue
+      elif len >= 17:
+        print("You may not exceed a length of 16. Please try again.")
         continue
     except ValueError:
       print("This is not a valid entry. Only numbers are allowed.")
@@ -12,4 +15,3 @@ def usr_pwd_length():
   return len
 
 length = usr_pwd_length()
-print(length)
