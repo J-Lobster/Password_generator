@@ -42,7 +42,7 @@ def usr_digits_length():
       break
   return min_digits
 
-digits_input = usr_digits_length()
+digit_input = usr_digits_length()
 
 def usr_specials_length():
   while True:
@@ -61,19 +61,20 @@ def usr_specials_length():
       break
   return min_special_chars
 
-specials_input = usr_specials_length()
+special_input = usr_specials_length()
 
-def input_err_handler(length):
+def input_err_handler(length, digit_input, special_input):
   while length == 8:
-    if digits_input and specials_input > 4:
+    if digit_input and special_input > 4:
       print("Do it again")
-      usr_digits_length() and usr_specials_length()
-      continue
+      digit_input = usr_digits_length() 
+      special_input = usr_specials_length()
+      print(f"{digit_input}\n{special_input}")
     else:
       break
-  return input_err_handler
+  return digit_input, special_input
 
-input_err_handler = input_err_handler(length)
+input_err_handler = input_err_handler(length, digit_input, special_input)
 
 def generator():
   while True:
@@ -81,9 +82,13 @@ def generator():
     for i in range(length):
       pwd += ''.join(secrets.choice(alpha))
 
-    if (sum(char in special_chars for char in pwd) == specials_input and 
-        sum(char in digits for char in pwd) == digits_input):
+    if (sum(char in special_chars for char in pwd) == special_input and 
+        sum(char in digits for char in pwd) == digit_input):
           break
-  print(pwd)
+  return pwd
 
-generator()
+
+pwd = generator()
+print(digit_input)
+print(special_input)
+print(pwd)
