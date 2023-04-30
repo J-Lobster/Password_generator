@@ -66,7 +66,7 @@ specials_input = usr_specials_length()
 def input_err_handler(length):
   while length == 8:
     if digits_input and specials_input > 4:
-      print("nah nigga, do it again")
+      print("Do it again")
       usr_digits_length() and usr_specials_length()
       continue
     else:
