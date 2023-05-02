@@ -46,6 +46,7 @@ digits_input = usr_digits_length()
 def usr_specials_length():
   while True:
     try:
+      8
       min_special_chars = int(input("Enter a number of special characters you wish to use: "))
       if min_special_chars <= 1:
         print(f"{min_special_chars} does not meet the minimum requirement. Please try again.")
