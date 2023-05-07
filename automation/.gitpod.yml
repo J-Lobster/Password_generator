@@ -1,0 +1,5 @@
+tasks:
+  - name: pip install
+    command: | 
+      cd automation
+      pip install -r requirements.txt
