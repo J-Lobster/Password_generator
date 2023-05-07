@@ -2,11 +2,11 @@ import secrets, string
 
 
 class pwd_generator:
-  def __init__(self, letters, digits, special_chars, alpha):
-    letters = string.ascii_letters
-    digits = string.digits
-    special_chars = string.punctuation
-    alpha = letters + digits + special_chars
+  def __init__(self):
+    self.letters = string.ascii_letters
+    self.digits = string.digits
+    self.special_chars = string.punctuation
+    self.alpha = letters + digits + special_chars
  
 # Handles password length.
   def usr_pwd_length():
@@ -24,7 +24,7 @@ class pwd_generator:
       else:
         break
     return length_input
-  self.length = usr_pwd_length()
+  length = usr_pwd_length()
     
 # This block handles digit inputs. 
   def usr_digits_length():
@@ -62,7 +62,7 @@ class pwd_generator:
 
 # These While blocks are meant to avoid inputs that exceed the length of the password. Antecedes against code hangs and generation lag.
   def input_handler():
-    while self.length == 8:
+    while length == 8:
       try:
         if digits_input and specials_input > 4:
           print(f"You entered {digit_input} for both inputs. Your inputs cannot be greater than your length.")

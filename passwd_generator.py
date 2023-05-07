@@ -24,11 +24,11 @@ def usr_pwd_length():
 
 length = usr_pwd_length()
 
-def usr_digits_length():
+def usr_digits():
   while True:
     try:
       min_digits = int(input("Enter a number of digits you wish to use: "))
-      if min_digits <= 1:
+      if min_digits <= 0:
         print(f"{min_digits} does not meet the minimum requirement. Please try again.")
         continue
       elif min_digits >= 9:
@@ -41,14 +41,12 @@ def usr_digits_length():
       break
   return min_digits
 
-digits_input = usr_digits_length()
-
-def usr_specials_length():
+def usr_specials():
   while True:
     try:
       8
       min_special_chars = int(input("Enter a number of special characters you wish to use: "))
-      if min_special_chars <= 1:
+      if min_special_chars <= 0:
         print(f"{min_special_chars} does not meet the minimum requirement. Please try again.")
         continue
       elif min_special_chars >= 9:
@@ -61,16 +59,115 @@ def usr_specials_length():
       break
   return min_special_chars
 
-specials_input = usr_specials_length()
+def input_handler():
+    digits_input = usr_digits()
+    specials_input = usr_specials()
+    while length == 8:
+      try:
+        if digits_input and specials_input >= 5:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 9:
+      try:
+        if digits_input and specials_input >= 5:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 10:
+      try:
+        if digits_input and specials_input >= 6:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 11:
+      try:
+        if digits_input and specials_input >= 6:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 12:
+      try:
+        if digits_input and specials_input >= 7:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 13:
+      try:
+        if digits_input and specials_input >= 7:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 14:
+      try:
+        if digits_input and specials_input >= 8:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+
+    while length == 15:
+      try:
+        if digits_input and specials_input >= 8:
+          print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
+          digits_input = usr_digits()
+          specials_input = usr_specials()
+          continue
+      except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")
+      else:
+        break
+    return digits_input, specials_input
 
 def generator():
+  digit, special = input_handler()
   while True:
     pwd = ''
     for i in range(length):
       pwd += ''.join(secrets.choice(alpha))
 
-    if (sum(char in special_chars for char in pwd) == specials_input and 
-        sum(char in digits for char in pwd) == digits_input):
+    if (sum(char in special_chars for char in pwd) == special and 
+        sum(char in digits for char in pwd) == digit):
           break
   print(pwd)
 
