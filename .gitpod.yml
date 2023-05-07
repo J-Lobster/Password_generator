@@ -1,5 +1,5 @@
 tasks:
   - name: pip install
     command: | 
-      cd automation
+      pip install --upgrade pip
       pip install -r requirements.txt
