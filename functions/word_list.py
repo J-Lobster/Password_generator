@@ -41,8 +41,10 @@ def gen(alpha, len):
         for i in range (len):
             pwd += ''.join(secrets.choice(word + non_alpha))
 
-        if (sum(char in special_chars for char in pwd) < len and 
-        sum(char in digits for char in pwd) < len):
+        if (any(char in special_chars for char in pwd) > word and 
+        sum(char in digits for char in pwd) > word):
+          continue
+        else:
           break
     print (pwd)
 
