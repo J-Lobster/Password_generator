@@ -94,8 +94,6 @@ def letter_count():
 
 letters = letter_count()
 
-
-
 def word_gen():
   word_list = list(get_english_words_set(['web2'], alpha=True))
   for word in word_list:
