@@ -6,7 +6,7 @@ special_chars = string.punctuation
 
 alpha = letters + digits + special_chars
 
-def usr_pwd_length():
+def pwd_length():
   while True:
     try:
       len = int(input("Choose your password length: "))
@@ -22,9 +22,9 @@ def usr_pwd_length():
       break
   return len
 
-length = usr_pwd_length()
+length = pwd_length()
 
-def usr_digits():
+def digit_count():
   while True:
     try:
       min_digits = int(input("Enter a number of digits you wish to use: "))
@@ -41,7 +41,7 @@ def usr_digits():
       break
   return min_digits
 
-def usr_specials():
+def specials_count():
   while True:
     try:
       8
@@ -60,14 +60,14 @@ def usr_specials():
   return min_special_chars
 
 def input_handler():
-    digits_input = usr_digits()
-    specials_input = usr_specials()
+    digits_input = digit_count()
+    specials_input = specials_count()
     while length == 8:
       try:
         if digits_input and specials_input >= 5:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -78,8 +78,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 5:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -90,8 +90,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 6:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -102,8 +102,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 6:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -114,8 +114,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 7:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -126,8 +126,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 7:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -138,8 +138,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 8:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count()
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -150,8 +150,8 @@ def input_handler():
       try:
         if digits_input and specials_input >= 8:
           print(f"You entered {digits_input} for both inputs. Your inputs cannot be exceed your password length.")
-          digits_input = usr_digits()
-          specials_input = usr_specials()
+          digits_input = digit_count()
+          specials_input = specials_count() 
           continue
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
