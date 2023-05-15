@@ -34,8 +34,6 @@ def digits_input():
       break
   return digits
 
-
-
 def specials_input():
   while True:
     try:
@@ -53,6 +51,7 @@ def specials_input():
       break
   return specials
 
+################################################################################################
 def letters_input():  
   while length == 8:   
     try:
@@ -123,6 +122,118 @@ def letters_input():
         print("This is not a valid entry. Only numbers are allowed.")  
     else:
       break
+
+  while length == 13:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 9:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 14:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 10:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 15:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 11:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 16:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 12:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 17:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 13:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 18:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 14:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 19:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 15:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break
+
+  while length == 20:   
+    try:
+      letters = int(input("Choose the number of letters you desire in your word: "))
+      if letters <= 0:
+        print(f"{letters} is not a valid entry. Please select a higher letter count.")
+        continue
+      elif letters >= 16:
+        print(f"{letters} is too many letters. Choose a number lower than 5")
+        continue
+    except ValueError:
+        print("This is not a valid entry. Only numbers are allowed.")  
+    else:
+      break           
   return letters
 
 def word_gen():
@@ -136,6 +247,7 @@ def word_gen():
         print(word)
         break
   return word
+###############################################################################################
 
 def input_handler():
     input_d = digits_input()
@@ -143,7 +255,7 @@ def input_handler():
     inputs = input_d + input_s
     while word == 3:
       try:
-        if inputs == 5:
+        if inputs == 6:
           break
       except ValueError:
         print("This is not a valid entry. Only numbers are allowed.")
@@ -153,7 +265,7 @@ def input_handler():
           input_s = specials_input()
           continue
 
-    while word == 3:
+    while word == 4:
       try:
         if inputs == 5:
           break
@@ -237,8 +349,7 @@ def input_handler():
           input_s = specials_input()
           continue
     return input_d, input_s
-
-
+########################################################
 
 def password_generator():
   digit, special = input_handler()
