@@ -1,5 +1,6 @@
 import secrets, string 
 from english_words import get_english_words_set
+from tables import letters_in_pwd_tables
 
 def usr_inputs():
   max_letters_limit = {
@@ -18,22 +19,7 @@ def usr_inputs():
     20: 15
   }
 
-  max_others_limit = {
-    2: [(3, 3), (2, 4), (4, 2), (1, 5), (5, 1)],
-    3: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    4: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    5: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    6: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    7: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    8: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    9: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    10: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    11: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    12: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    13: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    14: [(1, 4), (4, 1), (2, 3), (3, 2)],
-    15: [(1, 4), (4, 1), (2, 3), (3, 2)]
-  }
+  max_nonalpha_limit = letters_in_pwd_tables(digits, specials)
 
   while True:
     try:
@@ -48,7 +34,7 @@ def usr_inputs():
     
   while True:
     try:
-      letters = int(input(f"Choose the number of letters you desire in your word (up to {max_letters_limit[length]}): "))
+      letters = int(input(f"Enter the number of letters you wish to use (up to {max_letters_limit[length]}): "))
       if letters <= 1 or letters > max_letters_limit[length]:
         print(f"Invalid entry. Choose a number up to {max_letters_limit[length]}.")
         continue
@@ -61,8 +47,8 @@ def usr_inputs():
     try:
       digits = int(input("Enter a number of digits you wish to use: "))
       specials = int(input("Enter a number of special characters you wish to use: "))
-      if digits <= 0 or specials <= 0 or (digits, specials) not in max_others_limit[letters]:
-        print(f"One or both of your choices: ({digits}, {specials}) exceeds the allowed values for either category. \nYou can choose from the following options: {max_others_limit[letters]}")
+      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit[letters]:
+        print(f"One or both of your choices: ({digits}, {specials}) exceeds the allowed values for either category. \nYou can choose from the following options: {max_nonalpha_limit[letters]}")
         continue
     except ValueError:
       print("This is an invalid entry. Only numbers are allowed.")
