@@ -48,8 +48,8 @@ def usr_inputs():
     try:
       digits = int(input("Enter a number of digits you wish to use: "))
       specials = int(input("Enter a number of special characters you wish to use: "))
-      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_tables(length)[letters]:
-        print(f"One or both of your choices: ({digits}, {specials}) exceeds the allowed values for either category. \nYou can choose from the following options: {max_nonalpha_limit[letters]}")
+      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_tables(length).get(letters, []):
+        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_tables(length).get(letters, [])}")
         continue
     except ValueError:
       print("This is an invalid entry. Only numbers are allowed.")
@@ -82,5 +82,7 @@ def password_generator():
         sum(char in numbers for char in pwd) == digits):
           break
   print(pwd)
+
+  return pwd
 
 pwd = password_generator()
