@@ -1,6 +1,7 @@
 import secrets, string 
 from english_words import get_english_words_set
-from tables import passwordtables
+from tables import pwd_tables
+
 
 def usr_inputs():
   max_letters_limit = {
@@ -19,7 +20,7 @@ def usr_inputs():
     20: 15
   }
 
-  max_nonalpha_limit = passwordtables()
+  max_nonalpha_limit = pwd_tables()
 
   while True:
     try:
@@ -47,7 +48,7 @@ def usr_inputs():
     try:
       digits = int(input("Enter a number of digits you wish to use: "))
       specials = int(input("Enter a number of special characters you wish to use: "))
-      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit[letters]:
+      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_tables(length)[letters]:
         print(f"One or both of your choices: ({digits}, {specials}) exceeds the allowed values for either category. \nYou can choose from the following options: {max_nonalpha_limit[letters]}")
         continue
     except ValueError:
@@ -63,6 +64,7 @@ def password_generator():
   non_alpha = numbers + special_chars
   length, letters, digits, specials = usr_inputs()
   word_list = list(get_english_words_set(['web2'], alpha=True))
+
   for word in word_list:
     if len(word) > letters:
       continue
