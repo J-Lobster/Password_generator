@@ -1,6 +1,6 @@
 import secrets, string 
 from english_words import get_english_words_set
-from tables import letters_in_pwd_tables
+from tables import passwordtables
 
 def usr_inputs():
   max_letters_limit = {
@@ -19,7 +19,7 @@ def usr_inputs():
     20: 15
   }
 
-  max_nonalpha_limit = letters_in_pwd_tables(digits, specials)
+  max_nonalpha_limit = passwordtables()
 
   while True:
     try:
