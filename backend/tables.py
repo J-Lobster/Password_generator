@@ -1,4 +1,4 @@
-class pwd_tables:
+class non_alpha_tables:
     def __init__(self):
         self.len20 = {
             15: [(1, 4), (4, 1), (3, 2), (2, 3)],
@@ -145,7 +145,7 @@ class pwd_tables:
             2: [(1, 5), (5, 1), (2, 4), (4, 2), (3, 3)],
         }
 
-    def get_tables(self, length):
+    def get_nonalpha(self, length):
         if length == 20:
             return self.len20
         elif length == 19:
@@ -176,3 +176,22 @@ class pwd_tables:
             raise ValueError("Invalid password length")
 
         return None
+
+class alpha_tables:
+    def __init__(self):
+        self.max_letters = {
+        8: 3,
+        9: 4,
+        10: 5,
+        11: 6,
+        12: 7,
+        13: 8,
+        14: 9,
+        15: 10,
+        16: 11,
+        17: 12,
+        18: 13,
+        19: 14,
+        20: 15
+        }
+

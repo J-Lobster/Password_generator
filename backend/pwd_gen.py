@@ -1,26 +1,12 @@
-import secrets, string 
-from english_words import get_english_words_set
-from tables import pwd_tables
+import secrets, string, random
+from tables import alpha_tables, non_alpha_tables
 
+numbers = string.digits
+special_chars = string.punctuation
 
 def usr_inputs():
-  max_letters_limit = {
-    8: 3,
-    9: 4,
-    10: 5,
-    11: 6,
-    12: 7,
-    13: 8,
-    14: 9,
-    15: 10,
-    16: 11,
-    17: 12,
-    18: 13,
-    19: 14,
-    20: 15
-  }
-
-  max_nonalpha_limit = pwd_tables()
+  max_letters_limit = alpha_tables()
+  max_nonalpha_limit = non_alpha_tables()
 
   while True:
     try:
@@ -35,9 +21,13 @@ def usr_inputs():
     
   while True:
     try:
-      letters = int(input(f"Enter the number of letters you wish to use (up to {max_letters_limit[length]}): "))
-      if letters <= 1 or letters > max_letters_limit[length]:
-        print(f"Invalid entry. Choose a number up to {max_letters_limit[length]}.")
+      blank = ' '
+      letters = str(input(f"Enter a word that are up to {max_letters_limit.max_letters[length]} letters long: "))
+      if len(letters) <= 1 or len(letters) > max_letters_limit.max_letters[length]:
+        print(f"Invalid entry. Create a word up to {max_letters_limit.max_letters[length]} letters long.")
+        continue
+      elif blank in letters:
+        print(f"You did not enter a word. Please enter a word thats up to {max_letters_limit.max_letters[length]} letters long.")
         continue
     except ValueError:
       print("Invalid entry. Only numbers are allowed.")
@@ -48,8 +38,8 @@ def usr_inputs():
     try:
       digits = int(input("Enter a number of digits you wish to use: "))
       specials = int(input("Enter a number of special characters you wish to use: "))
-      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_tables(length).get(letters, []):
-        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_tables(length).get(letters, [])}")
+      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_nonalpha(length).get(len(letters), []):
+        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_nonalpha(length).get(len(letters), [])}")
         continue
     except ValueError:
       print("This is an invalid entry. Only numbers are allowed.")
@@ -59,24 +49,18 @@ def usr_inputs():
   return length, letters, digits, specials
 
 def password_generator():
-  numbers = string.digits
-  special_chars = string.punctuation
-  non_alpha = numbers + special_chars
   length, letters, digits, specials = usr_inputs()
-  word_list = list(get_english_words_set(['web2'], alpha=True))
+  non_alphas = numbers + special_chars
 
-  for word in word_list:
-    if len(word) > letters:
-      continue
-    else:
-      if len(word) == letters:
-        print(word)
-        break
+  alphas = ''.join(secrets.choice([c.upper(), c])for c in letters)
+  word = list(alphas)
+  random.shuffle(word)
+  shuffled_word = ''.join(word)
 
   while True:
-    pwd = ''
-    for i in range(length):
-      pwd += ''.join(secrets.choice(word + non_alpha))
+    pwd = shuffled_word
+    for i in range(length - len(shuffled_word)):
+      pwd += ''.join(secrets.choice(non_alphas))
 
     if (sum(char in special_chars for char in pwd) == specials and 
         sum(char in numbers for char in pwd) == digits):
