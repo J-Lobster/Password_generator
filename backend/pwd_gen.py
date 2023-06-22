@@ -1,26 +1,12 @@
 import secrets, string 
 from english_words import get_english_words_set
-from tables import pwd_tables
+from tables import alpha_tables, non_alpha_tables
 
 
 def usr_inputs():
-  max_letters_limit = {
-    8: 3,
-    9: 4,
-    10: 5,
-    11: 6,
-    12: 7,
-    13: 8,
-    14: 9,
-    15: 10,
-    16: 11,
-    17: 12,
-    18: 13,
-    19: 14,
-    20: 15
-  }
+  max_letters_limit = alpha_tables()
 
-  max_nonalpha_limit = pwd_tables()
+  max_nonalpha_limit = non_alpha_tables()
 
   while True:
     try:
@@ -35,9 +21,9 @@ def usr_inputs():
     
   while True:
     try:
-      letters = int(input(f"Enter the number of letters you wish to use (up to {max_letters_limit[length]}): "))
-      if letters <= 1 or letters > max_letters_limit[length]:
-        print(f"Invalid entry. Choose a number up to {max_letters_limit[length]}.")
+      letters = int(input(f"Enter the number of letters you wish to use (up to {max_letters_limit.max_letters[length]}): "))
+      if letters <= 1 or letters > max_letters_limit.max_letters[length]:
+        print(f"Invalid entry. Choose a number up to {max_letters_limit.max_letters[length]}.")
         continue
     except ValueError:
       print("Invalid entry. Only numbers are allowed.")
@@ -48,8 +34,8 @@ def usr_inputs():
     try:
       digits = int(input("Enter a number of digits you wish to use: "))
       specials = int(input("Enter a number of special characters you wish to use: "))
-      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_tables(length).get(letters, []):
-        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_tables(length).get(letters, [])}")
+      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_nonalpha(length).get(letters, []):
+        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_nonalpha(length).get(letters, [])}")
         continue
     except ValueError:
       print("This is an invalid entry. Only numbers are allowed.")
