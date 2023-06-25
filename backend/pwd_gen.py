@@ -67,4 +67,3 @@ def generator():
 
   return pwd
 
-pwd = generator()

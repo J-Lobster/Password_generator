@@ -8,10 +8,10 @@
 <body>
     <h1>Welcome to the Password generator</h1>
     <form action="/generator">
-        <input type="number" name="length" placeholder="Password length" required>
+        <input type="number" min="8" max="20" name="length" placeholder="Password length" required>
         <input type="text" name="letters" placeholder="Create a word" required>
-        <input type="number" name="digits" placeholder="Number of digits" required>
-        <input type="number" name="specials" placeholder="Number of special characters" required>
+        <input type="number" name="digits" min="1" max="17" placeholder="Number of digits" required>
+        <input type="number" name="specials" min="1" max="17" placeholder="Number of special characters" required>
         <button type="submit">Generate Password</button>
     </form>
 </body>
