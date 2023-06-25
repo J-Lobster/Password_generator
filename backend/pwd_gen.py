@@ -1,6 +1,9 @@
 import secrets, string, random
 from tables import alpha_tables, non_alpha_tables
 
+nums = string.digits
+spls = string.punctuation
+
 def usr_inputs():
   max_alpha_limit = alpha_tables()
   max_nonalpha_limit = non_alpha_tables()
@@ -19,11 +22,11 @@ def usr_inputs():
   while True:
     try:
       letters = str(input(f"Enter a word that are up to {max_alpha_limit.get_max_letters[length]} letters long: "))
-      if len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
-        print(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
+      if not letters.isalpha():
+        print("Invalid entry, letters only!")
         continue
-      elif ' ' in letters:
-        print(f"You did not enter a word. Please enter a word thats up to {max_alpha_limit.get_max_letters[length]} letters long.")
+      elif len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
+        print(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
         continue
     except ValueError:
       print("Invalid entry. Only numbers are allowed.")
@@ -46,8 +49,6 @@ def usr_inputs():
 
 def generator():
   length, letters, digits, specials = usr_inputs()
-  nums = string.digits
-  spls = string.punctuation
   non_alphas = nums + spls
 
   alphas = ''.join(secrets.choice([l.upper(), l])for l in letters)
