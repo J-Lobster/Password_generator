@@ -21,7 +21,7 @@ def usr_inputs():
     
   while True:
     try:
-      letters = str(input(f"Enter a word that are up to {max_alpha_limit.get_max_letters[length]} letters long: "))
+      letters = input(f"Enter a word that are up to {max_alpha_limit.get_max_letters[length]} letters long: ")
       if not letters.isalpha():
         print("Invalid entry, letters only!")
         continue
@@ -68,3 +68,4 @@ def generator():
   return pwd
 
 pwd = generator()
+print(pwd)
