@@ -1,11 +1,8 @@
 import secrets, string, random
 from tables import alpha_tables, non_alpha_tables
 
-numbers = string.digits
-special_chars = string.punctuation
-
 def usr_inputs():
-  max_letters_limit = alpha_tables()
+  max_alpha_limit = alpha_tables()
   max_nonalpha_limit = non_alpha_tables()
 
   while True:
@@ -21,13 +18,12 @@ def usr_inputs():
     
   while True:
     try:
-      blank = ' '
-      letters = str(input(f"Enter a word that are up to {max_letters_limit.max_letters[length]} letters long: "))
-      if len(letters) <= 1 or len(letters) > max_letters_limit.max_letters[length]:
-        print(f"Invalid entry. Create a word up to {max_letters_limit.max_letters[length]} letters long.")
+      letters = str(input(f"Enter a word that are up to {max_alpha_limit.max_letters[length]} letters long: "))
+      if len(letters) <= 1 or len(letters) > max_alpha_limit.max_letters[length]:
+        print(f"Invalid entry. Create a word up to {max_alpha_limit.max_letters[length]} letters long.")
         continue
-      elif blank in letters:
-        print(f"You did not enter a word. Please enter a word thats up to {max_letters_limit.max_letters[length]} letters long.")
+      elif ' ' in letters:
+        print(f"You did not enter a word. Please enter a word thats up to {max_alpha_limit.max_letters[length]} letters long.")
         continue
     except ValueError:
       print("Invalid entry. Only numbers are allowed.")
@@ -48,11 +44,13 @@ def usr_inputs():
 
   return length, letters, digits, specials
 
-def password_generator():
+def generator():
   length, letters, digits, specials = usr_inputs()
-  non_alphas = numbers + special_chars
+  nums = string.digits
+  spls = string.punctuation
+  non_alphas = nums + spls
 
-  alphas = ''.join(secrets.choice([c.upper(), c])for c in letters)
+  alphas = ''.join(secrets.choice([l.upper(), l])for l in letters)
   word = list(alphas)
   random.shuffle(word)
   shuffled_word = ''.join(word)
@@ -62,11 +60,10 @@ def password_generator():
     for i in range(length - len(shuffled_word)):
       pwd += ''.join(secrets.choice(non_alphas))
 
-    if (sum(char in special_chars for char in pwd) == specials and 
-        sum(char in numbers for char in pwd) == digits):
+    if (sum(char in spls for char in pwd) == specials and 
+        sum(char in nums for char in pwd) == digits):
           break
-  print(pwd)
 
   return pwd
 
-pwd = password_generator()
+#pwd = generator()
