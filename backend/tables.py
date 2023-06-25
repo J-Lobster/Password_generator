@@ -163,7 +163,7 @@ class non_alpha_tables:
             2: [(1, 5), (5, 1), (2, 4), (4, 2), (3, 3)],
         }
 
-    def get_max_nonalpha(self, length):
+    def get_max_nonalphas(self, length):
         if length == 20:
             return self.len20
         elif length == 19:
