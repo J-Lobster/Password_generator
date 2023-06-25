@@ -18,12 +18,12 @@ def usr_inputs():
     
   while True:
     try:
-      letters = str(input(f"Enter a word that are up to {max_alpha_limit.max_letters[length]} letters long: "))
-      if len(letters) <= 1 or len(letters) > max_alpha_limit.max_letters[length]:
-        print(f"Invalid entry. Create a word up to {max_alpha_limit.max_letters[length]} letters long.")
+      letters = str(input(f"Enter a word that are up to {max_alpha_limit.get_max_letters[length]} letters long: "))
+      if len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
+        print(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
         continue
       elif ' ' in letters:
-        print(f"You did not enter a word. Please enter a word thats up to {max_alpha_limit.max_letters[length]} letters long.")
+        print(f"You did not enter a word. Please enter a word thats up to {max_alpha_limit.get_max_letters[length]} letters long.")
         continue
     except ValueError:
       print("Invalid entry. Only numbers are allowed.")
@@ -34,8 +34,8 @@ def usr_inputs():
     try:
       digits = int(input("Enter a number of digits you wish to use: "))
       specials = int(input("Enter a number of special characters you wish to use: "))
-      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_nonalpha(length).get(len(letters), []):
-        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_nonalpha(length).get(len(letters), [])}")
+      if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_max_nonalpha(length).get(len(letters)):
+        print(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_max_nonalpha(length).get(len(letters))}")
         continue
     except ValueError:
       print("This is an invalid entry. Only numbers are allowed.")
@@ -66,4 +66,4 @@ def generator():
 
   return pwd
 
-#pwd = generator()
+pwd = generator()

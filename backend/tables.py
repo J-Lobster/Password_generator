@@ -1,6 +1,6 @@
 class alpha_tables:
     def __init__(self):
-        self.max_letters = {
+        self.get_max_letters = {
         8: 3,
         9: 4,
         10: 5,
@@ -163,7 +163,7 @@ class non_alpha_tables:
             2: [(1, 5), (5, 1), (2, 4), (4, 2), (3, 3)],
         }
 
-    def get_nonalpha(self, length):
+    def get_max_nonalpha(self, length):
         if length == 20:
             return self.len20
         elif length == 19:
