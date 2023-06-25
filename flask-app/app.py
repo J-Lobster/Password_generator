@@ -1,19 +1,18 @@
+import secrets, string, random
+from pwd_gen import usr_inputs, generator
+from tables import alpha_tables, non_alpha_tables
 from flask import Flask, render_template, request
-from ..backend.pwd_gen import password_generator
 
 app = Flask(__name__)
 
-@app.route('/generator', methods=['POST'])
-def generator():
-    length = request.args.get('length', type=int)
-    letters = request.args.get('letters', type=int)
-    digits = request.args.get('digits', type=int)
-    specials = request.args.get('specials', type=int)
-
-    password = password_generator(length, letters, digits, specials)
-    
+@app.route('/')
+def home():
     return render_template('index.html')
-    return render_template('password.html', password=password)
 
-if __name__ == "__main__":
+@app.route('/generate', methods=['POST'])
+def password_generator():
+    password = generator()
+    return password
+
+if __name__ == '__main__':
     app.run(debug=True)

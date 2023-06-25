@@ -1,3 +1,21 @@
+class alpha_tables:
+    def __init__(self):
+        self.max_letters = {
+        8: 3,
+        9: 4,
+        10: 5,
+        11: 6,
+        12: 7,
+        13: 8,
+        14: 9,
+        15: 10,
+        16: 11,
+        17: 12,
+        18: 13,
+        19: 14,
+        20: 15
+        }
+
 class non_alpha_tables:
     def __init__(self):
         self.len20 = {
@@ -177,21 +195,4 @@ class non_alpha_tables:
 
         return None
 
-class alpha_tables:
-    def __init__(self):
-        self.max_letters = {
-        8: 3,
-        9: 4,
-        10: 5,
-        11: 6,
-        12: 7,
-        13: 8,
-        14: 9,
-        15: 10,
-        16: 11,
-        17: 12,
-        18: 13,
-        19: 14,
-        20: 15
-        }
 
