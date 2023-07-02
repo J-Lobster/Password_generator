@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
 </head>
 <body>
-    <h1>Welcome to the Password generator</h1>
-    <form action="/generator">
-        <input type="number" min="8" max="20" name="length" placeholder="Password length" required>
-        <input type="text" name="letters" placeholder="Create a word" required>
-        <input type="number" name="digits" min="1" max="17" placeholder="Number of digits" required>
-        <input type="number" name="specials" min="1" max="17" placeholder="Number of special characters" required>
-        <button type="submit">Generate Password</button>
+    <h1>Password Generator</h1>
+    <form method="POST">
+        <label for="length">Choose your password length:</label>
+        <input type="number" id="length" name="length" min="8" max="20" required><br>
+        <label for="letters">Enter a word:</label>
+        <input type="text" id="letters" name="letters" required><br>
+        <label for="digits">Enter the number of digits:</label>
+        <input type="number" id="digits" name="digits" min="1" required><br>
+        <label for="specials">Enter the number of special characters:</label>
+        <input type="number" id="specials" name="specials" min="1" required><br>
+        <input type="submit" value="Generate Password">
     </form>
+
+    {% if password %}
+    <h2>Generated Password:</h2>
+    <p>{{ password }}</p>
+    {% endif %}
 </body>
 </html>
