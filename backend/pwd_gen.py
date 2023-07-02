@@ -1,12 +1,15 @@
 import secrets, string, random
 from tables import alpha_tables, non_alpha_tables
-
-nums = string.digits
-spls = string.punctuation
+from flask import request
 
 def usr_inputs():
   max_alpha_limit = alpha_tables()
   max_nonalpha_limit = non_alpha_tables()
+
+  length = int(request.form['length'])
+  letters = (request.form['letters'])
+  digits = int(request.form['digits'])
+  specials = int(request.form['specials'])
 
   while True:
     try:
@@ -18,13 +21,12 @@ def usr_inputs():
       print("This is not a valid entry. Only numbers are allowed.")
     else:
       break
-    
+
   while True:
     try:
       letters = str(input(f"Enter a word that are up to {max_alpha_limit.get_max_letters[length]} letters long: "))
       if not letters.isalpha():
         print("Invalid entry, letters only!")
-        continue
       elif len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
         print(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
         continue
@@ -44,11 +46,14 @@ def usr_inputs():
       print("This is an invalid entry. Only numbers are allowed.")
     else:
       break
-
   return length, letters, digits, specials
 
-def generator():
-  length, letters, digits, specials = usr_inputs()
+#length, letters, digits, specials = usr_inputs()
+
+def generator(length,letters,digits,specials):
+  
+  nums = string.digits
+  spls = string.punctuation
   non_alphas = nums + spls
 
   alphas = ''.join(secrets.choice([l.upper(), l])for l in letters)
@@ -66,4 +71,3 @@ def generator():
           break
 
   return pwd
-

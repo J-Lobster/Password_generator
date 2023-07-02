@@ -7,16 +7,12 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == "POST":
-        length = int(request.form['length'])
-        letters = (request.form['letters'])
-        digits = int(request.form['digits'])
-        specials = int(request.form['specials'])
-
+        length, letters, digits, specials = usr_inputs()
         password = generator(length, letters, digits, specials)
-
-        return render_template('index.html', password=password)
         
+        return render_template('index.html', password=password)
+    
     return render_template('index.html')
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
