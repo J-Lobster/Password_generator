@@ -31,12 +31,11 @@ def usr_inputs(length, letters, digits, specials):
     else:
       break
 
-    print(error_messages)
   return length, letters, digits, specials, error_messages
 
-#length, letters, digits, specials, error_message = usr_inputs(length, letters, digits, specials)
+#length, letters, digits, specials, error_messages = usr_inputs(length, letters, digits, specials)
 
-def generator(length,letters,digits,specials):
+def generator(length, letters, digits, specials):
   
   nums = string.digits
   spls = string.punctuation
