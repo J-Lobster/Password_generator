@@ -12,10 +12,10 @@ def home():
         digits = int(request.form['digits'])
         specials = int(request.form['specials'])
 
-        length, letters, digits, specials, error_message = usr_inputs(length, letters, digits, specials)
+        length, letters, digits, specials, error_messages = usr_inputs(length, letters, digits, specials)
 
-        if error_message:
-            return render_template('index.html', error_message = error_message)
+        if error_messages:
+            return render_template('index.html', error_message = error_messages)
 
         password = generator(length, letters, digits, specials)
         

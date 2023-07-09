@@ -22,17 +22,17 @@ def usr_inputs(length, letters, digits, specials):
       error_messages.append(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
       continue
     else:
-      print(letters)
       break
 
   while True:
     if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_max_nonalphas(length).get(len(letters)):
-      error_messages.append(f"One or both of your choices is an invalid entry. \nDigits: {digits} \nSpecials: {specials} \nPlease select from the following {max_nonalpha_limit.get_max_nonalphas(length).get(len(letters))}")
+      error_messages.append(f"One or both of your choices are invalid. \nYour choices: \nDigits: {digits} \nSpecials: {specials} \nChoose from the following: {max_nonalpha_limit.get_max_nonalphas(length).get(len(letters))}")
       continue
     else:
       break
-    print(digits, specials)
-  return length, letters, digits, specials, error_message
+
+    print(error_messages)
+  return length, letters, digits, specials, error_messages
 
 #length, letters, digits, specials, error_message = usr_inputs(length, letters, digits, specials)
 
