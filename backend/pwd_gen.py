@@ -1,6 +1,4 @@
 import secrets, string, random
-from tables import alpha_tables, non_alpha_tables
-from flask import request
 
 def generator(length, letters, digits, specials):
   
