@@ -22,7 +22,8 @@ def home():
 
         if not letters.isalpha():
             error_messages.append(f" {letters} is an invalid entry, try again!")
-        elif len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
+
+        if len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
             error_messages.append(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
 
         if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_max_nonalphas(length).get(len(letters)):
@@ -36,8 +37,6 @@ def home():
         return render_template('index.html', password=password)
 
     return render_template('index.html')
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
