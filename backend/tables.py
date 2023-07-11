@@ -1,6 +1,6 @@
 class alpha_tables:
     def __init__(self):
-        self.get_max_letters = {
+        self.get_letter_tables = {
         8: 4,
         9: 5,
         10: 5,
@@ -163,8 +163,7 @@ class non_alpha_tables:
             2: [(1, 5), (5, 1), (2, 4), (4, 2), (3, 3)],
         }
 
-    def get_max_nonalphas(self, length):
-        error_message = "No entry matching this length found."
+    def get_nonalpha_table(self, length):
         if length == 20:
             return self.len20
         elif length == 19:
@@ -194,6 +193,5 @@ class non_alpha_tables:
         else:
             raise ValueError("Invalid password length")
 
-        return error_message 
 
 

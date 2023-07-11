@@ -2,39 +2,6 @@ import secrets, string, random
 from tables import alpha_tables, non_alpha_tables
 from flask import request
 
-def usr_inputs(length, letters, digits, specials):
-  max_alpha_limit = alpha_tables()
-  max_nonalpha_limit = non_alpha_tables()
-
-  error_messages = []
-
-  while True:
-    if length < 8 or length > 20:
-        error_messages.append(f"{length} does not meet the requirements. Please select from a range of 8-20.")
-        continue
-    else:
-      break
-
-  while True:
-    if not letters.isalpha():
-      error_messages.append("Invalid entry, letters only!")
-    elif len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
-      error_messages.append(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
-      continue
-    else:
-      break
-
-  while True:
-    if digits <= 0 or specials <= 0 or (digits, specials) not in max_nonalpha_limit.get_max_nonalphas(length).get(len(letters)):
-      error_messages.append(f"One or both of your choices are invalid. \nYour choices: \nDigits: {digits} \nSpecials: {specials} \nChoose from the following: {max_nonalpha_limit.get_max_nonalphas(length).get(len(letters))}")
-      continue
-    else:
-      break
-
-  return length, letters, digits, specials, error_messages
-
-#length, letters, digits, specials, error_messages = usr_inputs(length, letters, digits, specials)
-
 def generator(length, letters, digits, specials):
   
   nums = string.digits
