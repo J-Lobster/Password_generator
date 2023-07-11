@@ -50,6 +50,8 @@ def usr_inputs():
 def generator():
   length, letters, digits, specials = usr_inputs()
   non_alphas = nums + spls
+  nums = string.digits
+  spls = string.punctuation
 
   alphas = ''.join(secrets.choice([l.upper(), l])for l in letters)
   word = list(alphas)
