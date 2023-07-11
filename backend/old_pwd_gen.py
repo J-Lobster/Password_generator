@@ -1,9 +1,6 @@
 import secrets, string, random
 from tables import alpha_tables, non_alpha_tables
 
-nums = string.digits
-spls = string.punctuation
-
 def usr_inputs():
   max_alpha_limit = alpha_tables()
   max_nonalpha_limit = non_alpha_tables()
