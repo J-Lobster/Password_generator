@@ -1,6 +1,6 @@
 class alpha_tables:
     def __init__(self):
-        self.get_max_letters = {
+        self.get_alpha_table = {
         8: 3,
         9: 4,
         10: 5,
