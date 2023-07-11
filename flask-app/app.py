@@ -21,7 +21,7 @@ def home():
             error_messages.append(f"{length} does not meet the requirements. Please select from a range of 8-20.")
 
         if not letters.isalpha():
-            error_messages.append(f" {letters} are an invalid entry, letters only!")
+            error_messages.append(f" {letters} is an invalid entry, try again!")
         elif len(letters) <= 1 or len(letters) > max_alpha_limit.get_max_letters[length]:
             error_messages.append(f"Invalid entry. Create a word up to {max_alpha_limit.get_max_letters[length]} letters long.")
 
