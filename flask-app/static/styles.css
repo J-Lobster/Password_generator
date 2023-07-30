@@ -5,10 +5,12 @@ html {
 
 h1 {
     font-family: 'Courier new';
-    text-align: center;
-    color: hsl(323, 100%, 50%, 0.896);
-    border: solid rgba(142, 23, 181, 0.789) 5px;
+    color: hsl(323, 100%, 50%);
+    background-color: #008080;
+    border: outset #008080 5px;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px #03000098;
+    
 }
 
 form {
@@ -20,4 +22,14 @@ form {
 h2 {
     font-family: 'Courier new';
     text-decoration: underline;
+}
+
+p {
+    font-family: 'Times New Roman';
+    background-color: #721aad;
+    border: inset #8b0dde 5px;
+    border-radius: 5px;
+    width: 50%;
+    margin: 0 auto;
+    box-shadow: 5px 5px 5px #010000e8;
 }
