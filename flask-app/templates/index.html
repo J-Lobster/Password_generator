@@ -2,20 +2,21 @@
 <html>
 <head>
     <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'styles.css') }}">
 </head>
 <body>
     <h1>Password Generator</h1>
     <form method="POST">
-        <label for="length">Choose your password length:</label>
+        <label for="length">Choose your password length:<br></label>
         <input type="number" id="length" name="length" min="8" max="20" required><br>
 
-        <label for="letters">Enter a word:</label>
+        <label for="letters">Enter a word:<br></label>
         <input type="text" id="letters" name="letters" required><br>
 
-        <label for="digits">Enter the number of digits:</label>
+        <label for="digits">Enter the number of digits:<br></label>
         <input type="number" id="digits" name="digits" min="1" max="17" required><br>
         
-        <label for="specials">Enter the number of special characters:</label>
+        <label for="specials">Enter the number of special characters:<br></label>
         <input type="number" id="specials" name="specials" min="1" max="17" required><br>
         
         <input type="submit" value="Generate Password">
