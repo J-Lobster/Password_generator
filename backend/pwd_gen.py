@@ -20,7 +20,3 @@ def generator(length, letters, digits, specials):
           break
 
   return pwd
-
-
-
-
