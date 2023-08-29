@@ -204,6 +204,3 @@ class non_alpha_tables:
             return self.len8
         else:
             raise ValueError("Invalid password length")
-
-
-
