@@ -15,3 +15,4 @@ def error_handler(length, letters, digits, specials):
     error_messages.append(f"One or both of your choices is an invalid entry.")
     error_messages.append(f"Choose from the following combinations: {max_nonalpha_limit.get_nonalpha_table(length).get(len(letters))}")
   return error_messages
+  
